@@ -49,8 +49,6 @@ app = Flask(__name__)
 `__name__` tells Flask which module is running so it can find templates and static files correctly.
 
 >**Note:**  
->### Decorators in Flask
->
 >In Flask, a **decorator** is a way to **add extra behavior to a function**, usually to connect it to a specific URL route, **without changing the original function**.
 >In Flask, decorators like @app.route() are used to “link” a function to a URL, so when someone visits that URL, the function runs.
 >If you use @app.route("/Hello_World"), it links the function right below to the URL http://localhost:5000/Hello_World. In other words, the function runs whenever you access that URL.
@@ -66,7 +64,8 @@ def hello_world():
 ```
 Defines a function that returns the string "HelloWorld" to the browser.
 This is the response that the user sees on the web page.
->**Note**
+
+>**Note:**  
 >Instead of returning plain text like return "HelloWorld", it's better to use jsonify("HelloWorld") in web applications. This way, the function returns JSON, which is the standard format for data on the web.
 >You need to import jsonify from Flask like this: from flask import Flask, jsonify.
 
