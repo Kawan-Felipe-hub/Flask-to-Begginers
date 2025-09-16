@@ -43,22 +43,24 @@ app = Flask(__name__)
 `__name__` tells Flask which module is running so it can find templates and static files correctly.
 
 >**Note:**  
->Using dynamic parameters 
+Using dynamic parameters via `<string:name>`, which has the structure `<type:variable_name>` (`<` and `>` indicate dynamic parameters in the URL). 
 ```python
 @app.route("/<string:name>")
 ```
-
+When a user accesses the dynamic route `/<string:name>`, the application captures the value from the URL and returns a personalized message.  
+For example:  
+- `/Johnn` → "Hello, John!"  
+- `/James` → "Hello, James!"
 
 ```python
-def hello_world():
-    return "HelloWorld"
+def show_name(name):
+    return f"Hello,{name}"
 ```
-Defines a function that returns the string "HelloWorld" to the browser.
+Defines a function that returns the string "Hello, the_name_in_URL" to the browser.
 This is the response that the user sees on the web page.
 
->**Note:**  
->Instead of returning plain text like return "HelloWorld", it's better to use jsonify("HelloWorld") in web applications. This way, the function returns JSON, which is the standard format for data on the web.
->You need to import jsonify from Flask like this: from flask import Flask, jsonify.
+>**Note:**
+>The f before the string is used to insert the variable name directly into the string.
 
 ```python
 if __name__ == "__main__":
@@ -69,4 +71,3 @@ Ensures the Flask server runs only if this script is executed directly, not if i
 Starts the Flask development server:
 debug=True enables automatic reload and detailed error messages.
 
-The server runs at http://127.0.0.1:5000/.
